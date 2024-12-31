@@ -7,6 +7,14 @@ app.get("/", (req, res) => {
   res.type('html').send(html);
 });
 
+app.get("/hello", (req, res) => {
+  console.log(`${new Date().toISOString()} - Hello endpoint accessed from ${req.ip}`);
+  res.json({
+    message: "Hello, World!",
+    timestamp: new Date().toISOString()
+  });
+});
+
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 server.keepAliveTimeout = 120 * 1000;
